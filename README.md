@@ -33,7 +33,7 @@ Latino communities in the U.S. often face challenges accessing emergency resourc
 ---
 
 ## 3) How to Run (Local)
-Docker
+### Docker
 
 Build the Docker image:
 
