@@ -1,6 +1,6 @@
 # 🌎 Comunidad Connect
 
-## 1) Executive Summary
+# 1) Executive Summary
 
 **Problem:**  
 Latino communities in the U.S. often face challenges accessing emergency resources and understanding emergency instructions in English. During crises, this can create confusion and prevent timely access to food, shelter, legal aid, and medical care.
@@ -13,7 +13,7 @@ Latino communities in the U.S. often face challenges accessing emergency resourc
 
 ---
 
-## 2) System Overview
+# 2) System Overview
 
 **Course Concept(s):**  
 - Flask: Used to build a small REST API.  
@@ -32,24 +32,24 @@ Latino communities in the U.S. often face challenges accessing emergency resourc
 
 ---
 
-## 3) How to Run (Local)
-### Docker
+# 3) How to Run (Local)
+## Docker
 
-Build the Docker image:
+### Build the Docker image:
 
 docker build -t comunidadconnect:latest .
 
-Run the Docker container:
+#### Run the Docker container:
 
 docker run --rm -p 5000:5000 --env-file .env.example comunidadconnect:latest
 
-⚠️ Make sure no other containers are using port 5000. Stop extra containers with:
+### ⚠️ Make sure no other containers are using port 5000. Stop extra containers with:
 
 docker ps ---> This will list all existing containers 
 
 docker stop <CONTAINER_ID>   --->  Stop container using port 5000
 
-Open your browser:
+### Open your browser:
 
 http://localhost:5000
 
