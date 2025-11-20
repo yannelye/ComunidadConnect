@@ -82,7 +82,7 @@ Example:
 <img width="719" height="511" alt="Screenshot 2025-11-20 at 5 48 54 PM" src="https://github.com/user-attachments/assets/d399bd79-b7d6-4c59-a562-269a98521e2e" />
 
 
-### 4) Design Decisions
+# 4) Design Decisions
 Why this concept?
 
 Flask was chosen for its lightweight nature, simplicity, and minimal setup. 
@@ -115,7 +115,7 @@ Only one container is needed; scaling not required for demo.
 
 Known limitations: single-endpoint structure, no database, translations may be incomplete.
 
-### 5) Results & Evaluation
+# 5) Results & Evaluation
 
 Sample output JSON included above.
 
@@ -123,7 +123,7 @@ Fast response due to in-memory JSON; very low resource footprint.
 
 Smoke tests verified /resources endpoint returns correct JSON structure.
 
-### 7) What’s Next
+# 7) What’s Next
 
 Add more frontend enhancements (animations, styling).
 
@@ -133,7 +133,7 @@ Expand translation accuracy and handle more complex sentences.
 
 Consider adding categories filtering and a small database for persistence.
 
-### 8) Links
+# 8) Links
 
 GitHub Repo: https://github.com/yannelye/Final_Case
 
