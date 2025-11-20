@@ -1,0 +1,66 @@
+[
+    {
+      "zip": "90011",
+      "name": "Los Angeles Food Bank",
+      "category": "food",
+      "address": "1734 E 41st St, Los Angeles, CA 90011",
+      "phone": "323-234-3030",
+      "description": "Provides free food to local families in need."
+    },
+    {
+      "zip": "90011",
+      "name": "LA Legal Aid",
+      "category": "legal",
+      "address": "123 Main St, Los Angeles, CA 90011",
+      "phone": "323-555-0101",
+      "description": "Immigration and housing legal support."
+    },
+    {
+      "zip": "79936",
+      "name": "El Paso Community Shelter",
+      "category": "shelter",
+      "address": "456 Hope Rd, El Paso, TX 79936",
+      "phone": "915-555-0202",
+      "description": "Emergency shelter and disaster support."
+    },
+    {
+      "zip": "11368",
+      "name": "Corona Community Center",
+      "category": "community",
+      "address": "321 Elm St, Queens, NY 11368",
+      "phone": "718-555-0404",
+      "description": "Social services and food distribution."
+    },
+    {
+      "zip": "20164",
+      "name": "Loudoun County Latino Resource Center",
+      "category": "community",
+      "address": "123 Civic Plaza, Ashburn, VA 20164",
+      "phone": "703-555-0101",
+      "description": "Provides educational, social, and immigration support for the Latino community."
+    },
+    {
+      "zip": "20164",
+      "name": "Ashburn Food Pantry",
+      "category": "food",
+      "address": "456 Community Way, Ashburn, VA 20164",
+      "phone": "703-555-0202",
+      "description": "Distributes free food and essentials to families in need."
+    },
+    {
+      "zip": "20164",
+      "name": "Loudoun Legal Aid",
+      "category": "legal",
+      "address": "789 Justice Ave, Ashburn, VA 20164",
+      "phone": "703-555-0303",
+      "description": "Immigration and housing legal support for low-income residents."
+    },
+    {
+      "zip": "20164",
+      "name": "Northern Virginia Health Clinic",
+      "category": "medical",
+      "address": "101 Health Blvd, Ashburn, VA 20164",
+      "phone": "703-555-0404",
+      "description": "Free or low-cost medical care for uninsured residents."
+    }
+  ]

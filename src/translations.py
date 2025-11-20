@@ -1,5 +1,6 @@
 import re
 
+# Phrasebook: English → simple Spanish
 PHRASEBOOK = {
     "evacuate": "evacuar",
     "shelter": "refugio",
@@ -17,10 +18,17 @@ PHRASEBOOK = {
 }
 
 def translate_to_spanish_simplified(text):
+    """
+    Translates text to a simple, accessible Spanish using the PHRASEBOOK.
+    Returns a single string with a prepended message.
+    """
     text = text.strip()
     low = text.lower()
+    # Replace phrases from PHRASEBOOK
     for en, es in PHRASEBOOK.items():
-        low = re.sub(r"\\b" + re.escape(en) + r"\\b", es, low)
+        low = re.sub(r"\b" + re.escape(en) + r"\b", es, low)
+    
+    # Capitalize sentences
     sentences = re.split(r"[.!?]+", low)
     simple = []
     for s in sentences:
@@ -29,22 +37,29 @@ def translate_to_spanish_simplified(text):
             continue
         s = s.capitalize()
         simple.append(s)
+    
     joined = ". ".join(simple)
     if joined and not joined.endswith("."):
         joined += "."
+    
     return "Mensaje en español (versión accesible): " + joined
 
 def extract_key_actions(text):
+    """
+    Extracts up to 6 key actionable phrases from the input text.
+    Looks for common verbs or phrases related to actions.
+    """
     sentences = re.split(r"[.!?]+", text)
     actions = []
     for s in sentences:
         s = s.strip()
         if not s:
             continue
-        if re.search(r"\\b(call|go to|evacuate|go|stay|gather|leave|seek|ask for|apply|bring)\\b", s.lower()):
+        # Look for action keywords
+        if re.search(r"\b(call|go to|evacuate|go|stay|gather|leave|seek|ask for|apply|bring)\b", s.lower()):
             actions.append(s.strip())
-        if re.match(r"^[A-Z][a-z]+\\s", s) and s.split()[0].lower() in ("leave", "stay", "call", "go"):
-            actions.append(s.strip())
+    
+    # Remove duplicates, limit to 6
     seen = []
     for a in actions:
         if a not in seen:

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comunidad Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .output, .actions, .resources {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .output {
+            background-color: #ecf0f1;
+        }
+        .actions {
+            background-color: #f39c12;
+            color: white;
+        }
+        .resources {
+            background-color: #2ecc71;
+            color: white;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Translate Text to Simple Spanish</h1>
+        <label for="englishText">Enter English Text:</label>
+        <textarea id="englishText" placeholder="Type emergency instructions here..."></textarea>
+        <button onclick="translateText()">Translate</button>
+
+        <div class="output" id="spanishOutput" style="display:none;">
+            <h3>Translated Text:</h3>
+            <p id="translatedText"></p>
+        </div>
+
+        <div class="actions" id="keyActions" style="display:none;">
+            <h3>Key Actions:</h3>
+            <ul id="actionsList"></ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Search Resources by Zip Code</h2>
+        <label for="zipcode">Enter Zip Code:</label>
+        <input type="text" id="zipcode" placeholder="e.g., 20164">
+        <button onclick="searchResources()">Search</button>
+
+        <div class="resources" id="resourcesOutput" style="display:none;">
+            <h3>Resources:</h3>
+            <ul id="resourcesList"></ul>
+        </div>
+    </div>
+
+    <script>
+        async function translateText() {
+            const text = document.getElementById('englishText').value;
+            if (!text.trim()) {
+                alert("Please enter some text!");
+                return;
+            }
+
+            const response = await fetch('/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+
+                // Show translated text
+                document.getElementById('translatedText').innerText = data.spanish;
+                document.getElementById('spanishOutput').style.display = 'block';
+
+                // Show key actions
+                const actionsList = document.getElementById('actionsList');
+                actionsList.innerHTML = '';
+                data.actions.forEach(action => {
+                    const li = document.createElement('li');
+                    li.textContent = action;
+                    actionsList.appendChild(li);
+                });
+                document.getElementById('keyActions').style.display = 'block';
+            } else {
+                alert("Error translating text. Please try again.");
+            }
+        }
+
+        async function searchResources() {
+            const zip = document.getElementById('zipcode').value.trim();
+            if (!zip) {
+                alert("Please enter a zip code!");
+                return;
+            }
+
+            const response = await fetch(`/resources?zipcode=${zip}`);
+            if (response.ok) {
+                const data = await response.json();
+                const resourcesList = document.getElementById('resourcesList');
+                resourcesList.innerHTML = '';
+
+                if (data.count === 0) {
+                    const li = document.createElement('li');
+                    li.textContent = "No resources found for this zip code.";
+                    resourcesList.appendChild(li);
+                } else {
+                    data.resources.forEach(r => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${r.name}</strong> (${r.category}) - ${r.address}, Phone: ${r.phone}. ${r.description}`;
+                        resourcesList.appendChild(li);
+                    });
+                }
+
+                document.getElementById('resourcesOutput').style.display = 'block';
+            } else {
+                alert("Error fetching resources. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
