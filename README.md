@@ -134,7 +134,7 @@ Consider adding categories filtering and a small database for persistence.
 
 # 8) Links
 
-GitHub Repo: https://github.com/yannelye/Final_Case
+GitHub Repo: https://github.com/yannelye/ComunidadConnect
 
 # ⚙ Notes
 Only one Docker container should run at a time to avoid port conflicts.
