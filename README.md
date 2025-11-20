@@ -59,7 +59,6 @@ http://localhost:5000
 ### 1️⃣ Search for Resources
 Enter a ZIP code (e.g., 20164) in the search box.
 
-Optionally select a category (Food, Legal, Shelter, Medical, Community).
 
 Click Search to see local resources in your area.
 
